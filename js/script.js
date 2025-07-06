@@ -40,14 +40,13 @@ Invite = {
 
         $('#sendAsistencia').on('click', function(e) {
             e.preventDefault();
-            var action = e.target.action;
             if (Invite.isOkAsistencia()) {
                 // Load and disabled buttom.
                 $("#sendAsistencia").text("Enviando...");
                 $("#sendAsistencia").prop("disabled", true);
                 
                 // Envio form
-                Invite.sendAsistencia(action);
+                Invite.sendAsistencia();
             }
         });
     },
@@ -70,8 +69,9 @@ Invite = {
     //         $('.formulario-content').append("<h5 class='modal-title'>Informaci&oacute;n enviada</h5><p class='subtitle'>Gracias</p>");
     //     }, 2000);
     // },
-    sendAsistencia: function(action) {
+    sendAsistencia: function() {
         var form = document.getElementById('formAsistencia');
+        var action = form.action || 'https://script.google.com/macros/s/AKfycbxPoJjW88GEHpCExpr1k9T8q4AmcrlVlAaYGPh0Fv0iBFzNtxpKSzw03OLmPyYpGjlr/exec';
         var data = new FormData(form);
         fetch(action, {
             method: 'POST',
