@@ -1,6 +1,7 @@
 Invite = {
     // Declarar targetDate como una variable privada dentro del ámbito de Invite
     init: function() {
+        this.setParallaxHeight();
         // Inicializar la fecha objetivo: 30 de agosto de 2025
         let targetDate = new Date("2025-08-30T18:30:00");
         this.updateCountdown(targetDate);
@@ -52,23 +53,6 @@ Invite = {
     },
 
     //Envio de formulario
-    // sendAsistencia: function() {
-    //     var $form = $('form#formAsistencia'), 
-    //     url = 'https://script.google.com/macros/s/AKfycbxPoJjW88GEHpCExpr1k9T8q4AmcrlVlAaYGPh0Fv0iBFzNtxpKSzw03OLmPyYpGjlr/exec';
-    //     var jqxhr = $.ajax({
-    //         url: url,
-    //         method: "GET",
-    //         dataType: "json",
-    //         data: $form.serialize(),
-    //         async: false,
-    //     });
-
-    //     setTimeout(function() {
-    //         $form.hide();
-    //         $('#sendAsistencia').hide();
-    //         $('.formulario-content').append("<h5 class='modal-title'>Informaci&oacute;n enviada</h5><p class='subtitle'>Gracias</p>");
-    //     }, 2000);
-    // },
     sendAsistencia: function() {
         var form = document.getElementById('formAsistencia');
         var action = form.action || 'https://script.google.com/macros/s/AKfycbxPoJjW88GEHpCExpr1k9T8q4AmcrlVlAaYGPh0Fv0iBFzNtxpKSzw03OLmPyYpGjlr/exec';
@@ -80,11 +64,12 @@ Invite = {
         .then(() => {
             $(form).hide();
             $('#sendAsistencia').hide();
-            $('.formulario-content').append("<h5 class='modal-title'>Informaci&oacute;n enviada</h5><p class='subtitle'>Gracias</p>");
+            $('.form-block-description').empty(); // Limpiar contenido previo
+            $('.form-block-description').append("<h5 class='text mt-5'>Informaci&oacute;n enviada con éxito</h5><h5 class='sub-text mt-2'>Gracias por confirmar</h5>");
         })
         .catch(error => {
             console.error('Error al enviar el formulario:', error);
-            $('.formulario-content').append("<h5 class='modal-title'>Error al enviar</h5><p class='subtitle'>Por favor, intenta de nuevo más tarde.</p>");
+            $('.form-block-description').append("<h5 class='text mt-5'>Error al enviar</h5><p class='sub-text mt-2'>Por favor, intenta de nuevo más tarde.</p>");
         });
 
     },
@@ -172,6 +157,15 @@ Invite = {
         return flag;
     },
 
+    // Función para calcular y asignar el alto de la pantalla al parallax
+    setParallaxHeight: function() {
+        const parallaxHeight = window.innerHeight + 100;
+        const mainBlock = document.querySelector('.main-block');
+        if (mainBlock) {
+            mainBlock.style.height = `${parallaxHeight}px`;
+        }
+    },
+
     // Función para actualizar la cuenta atrás
     updateCountdown: function(targetDate) {
         var now = new Date();
@@ -199,4 +193,8 @@ Invite = {
 
 $(document).ready(function() {
     Invite.init();
+});
+
+$(window).on('resize', function() {
+    Invite.setParallaxHeight();
 });
