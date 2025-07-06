@@ -9,7 +9,7 @@
 
 /* Estilos generales */
 body {
-    background-color: #fffcf7;
+    background-color: var(--background-color2);
     /* App onda borde https://app.haikei.app/ */
 }
 p, span, label {
