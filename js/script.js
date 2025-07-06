@@ -194,7 +194,3 @@ Invite = {
 $(document).ready(function() {
     Invite.init();
 });
-
-$(window).on('resize', function() {
-    Invite.setParallaxHeight();
-});
