@@ -160,9 +160,9 @@ Invite = {
     // Función para calcular y asignar el alto de la pantalla al parallax
     setParallaxHeight: function() {
         const parallaxHeight = window.innerHeight + 100;
-        const mainBlock = document.querySelector('.main-block');
-        if (mainBlock) {
-            mainBlock.style.height = `${parallaxHeight}px`;
+        const parallax = document.querySelector('.parallax');
+        if (parallax) {
+            parallax.style.height = `${parallaxHeight}px`;
         }
     },
 

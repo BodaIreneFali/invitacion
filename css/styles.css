@@ -50,7 +50,7 @@ h2.spirited {
 
 }
 .main-block {
-    height: calc(100vh + 100px);
+    height: 100vh;
     padding: 0;
     position: static;
     .parallax {
@@ -59,7 +59,6 @@ h2.spirited {
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
-        height: 100%;
 
         @media(min-width: 724px) {
             background-image: url(../recursos/IMG_1818.JPEG);  
@@ -155,7 +154,7 @@ h2.spirited {
 .when-block {
     position: relative;
     padding-top: 0px;
-    margin-top: -120px;
+    margin-top: -40px;
 
     /* .img-wrapper {
         position: absolute;
