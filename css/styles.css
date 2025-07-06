@@ -8,8 +8,8 @@
 }
 
 /* Estilos generales */
-body {
-    background-color: var(--background-color2);
+body, .modal-content {
+    background-color: var(--background-color1);
     /* App onda borde https://app.haikei.app/ */
 }
 p, span, label {
@@ -36,7 +36,11 @@ h2.spirited {
     &:hover {
         color: white;
     }
+    &:focus {
+        box-shadow: 0 0 0 .2rem rgba(62, 71, 58, .25);
+    }
 }
+
 /* Bloques */
 [class$="-block"] {
     position: relative;
@@ -155,6 +159,24 @@ h2.spirited {
     position: relative;
     padding-top: 0px;
     margin-top: -40px;
+    /* &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 120px;
+        left: 0;
+        width: 100%;
+        height: 600px;
+        background-image: url(../recursos/wave-haikei.svg);
+        background-position: bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 1;
+        transform: translate(0, -100%);
+        @media(min-width: 1400px) {
+            bottom: -14vw;
+        }
+    } */
 
     /* .img-wrapper {
         position: absolute;
@@ -468,11 +490,14 @@ h2.spirited {
         background-image: none;
     }
     .custom-control-input:checked~.custom-control-label::before {
-        background-color: darkgreen;
+        background-color: var(--text-color-high);
         color: var(--text-color-high);
     }
     .custom-control-input:checked~.custom-control-label::after {
         background-image: none;
+    }
+    .custom-control-input:focus~.custom-control-label::before {
+        box-shadow: 0 0 0 .2rem rgba(62, 71, 58, .25);
     }
 
     input, textarea {
