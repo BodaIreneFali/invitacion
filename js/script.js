@@ -3,7 +3,7 @@ Invite = {
     init: function() {
         this.setParallaxHeight();
         // Inicializar la fecha objetivo: 30 de agosto de 2025
-        let targetDate = new Date("2025-08-30T18:30:00");
+        let targetDate = new Date("2025-08-30T18:00:00");
         this.updateCountdown(targetDate);
         this.events();
     },

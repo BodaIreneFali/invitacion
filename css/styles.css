@@ -12,6 +12,9 @@ body, .modal-content {
     background-color: var(--background-color1);
     /* App onda borde https://app.haikei.app/ */
 }
+.modal-content { 
+    border-radius: 12px;
+}
 p, span, label {
     font-family: 'RobotoMedium';
     color: var(--text-color-high);
@@ -209,9 +212,7 @@ h2.spirited {
     }
 }
 .where-block {
-    .container {
-        gap: 40px;
-    }
+    
     img {
         width: 100%;
         max-width: 375px;
@@ -224,13 +225,12 @@ h2.spirited {
         bottom: 50%;
     }
     .text-wrapper {
-        margin-bottom: 100px;
         position: relative;
-    }
-    .where-text {
-        width: 100%;
-        @media(min-width: 724px) {
-            width: 50%; 
+        &:first-of-type {
+            margin-bottom: 100px;
+        }
+        @media(min-width: 768px) {
+            margin-bottom: 100px;
         }
     }
     .close-button {
