@@ -5,6 +5,7 @@ Invite = {
         // Inicializar la fecha objetivo: 30 de agosto de 2025
         let targetDate = new Date("2025-08-30T18:00:00");
         this.updateCountdown(targetDate);
+        this.hideLoader();
         this.events();
     },
     
@@ -50,6 +51,20 @@ Invite = {
                 Invite.sendAsistencia();
             }
         });
+    },
+
+    //Ocultar loader
+    hideLoader: function() {
+        var loader = document.querySelector('.preloader-area');
+        if (loader) {
+            setTimeout(() => {
+                loader.style.transition = 'opacity 1s ease'; // Transición suave de 1 segundo
+                loader.style.opacity = '0'; // Cambiar la opacidad a 0
+                setTimeout(() => {
+                    loader.style.display = 'none'; // Ocultar completamente después de la transición
+                }, 1000); // Esperar a que termine la transición (1 segundo)
+            }, 5000);
+        }
     },
 
     //Envio de formulario
