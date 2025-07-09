@@ -13,7 +13,34 @@ body, .modal-content {
     /* App onda borde https://app.haikei.app/ */
 }
 .modal-content { 
-    border-radius: 12px;
+    border-radius: 8px;
+    margin: 32px;
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 80px;
+        height: 142px;
+        background-image: url(../recursos/leaves-corners.svg);
+        top: -22px;
+        left: -47px;
+        background-size: cover;
+        background-position-x: left;
+        background-position-y: top;
+    }
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 80px;
+        height: 142px;
+        background-image: url(../recursos/leaves-corners.svg);
+        bottom: -18px;
+        right: -50px;
+        background-size: cover;
+        background-position-x: right;
+        background-position-y: bottom;
+    }
 }
 p, span, label {
     font-family: 'RobotoMedium';
