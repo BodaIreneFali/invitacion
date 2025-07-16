@@ -99,6 +99,7 @@ Invite = {
         // Variables necesarias para la validacion
         var flag = true;
         var err = '';
+        var testigo = false;
   
         // Variables del form para validar.
         var attend = $('input[name="asistencia"]:checked').val();
@@ -121,12 +122,16 @@ Invite = {
             flag = false;
             $("#telefonoAsistente").addClass('err');
             err = err + "Indica un n&uacute;mero de tel&eacute;fono v&aacute;lido<br>";
+        } else if (phone == '627357523' || phone == '675386182') {
+            testigo = true;
         }
         //Email
         if(email == '' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ) {
             flag = false;
             $("#correoAsistente").addClass('err');
             err = err + "Indica un correo electr&oacute;nico v&aacute;lido<br>";
+        } else if (email == 'angelmurianabracho@gmail.com' || email == 'garciamariagg25@gmail.com'){
+            testigo = true;
         }
         //Si asiste
         if(attend == 'Si') {
@@ -153,9 +158,10 @@ Invite = {
                 err = err + "Indica si vendr&aacute;s con niños<br>";
             }
         }
-  
+
+        
         if (flag === false) {
-          $('.msj-content').after('<span id="error-form">' + err + '</span>');
+            $('.msj-content').after('<span id="error-form">' + err + '</span>');
         } else {
             var date = new Date()
             const options = {
@@ -168,6 +174,15 @@ Invite = {
             };
             date = new Intl.DateTimeFormat('es-Es', options).format(date);
             $('#datetime').val(date);
+
+            if (testigo === true) {
+                const testigosModal = $('#testigosModal');
+                if (testigosModal) {
+                    setTimeout(() => {
+                        testigosModal.modal('show');
+                    }, 2000); 
+                }
+            }
         }
         return flag;
     },
